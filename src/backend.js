@@ -94,8 +94,12 @@ function convert() {
             expBin = expBin.substring(2);
         
         }
+        const BCDgroup1 = DPBCD(num.slice(1, 4));
+        const BCDgroup2 = DPBCD(num.slice(4, 7));
+
         console.log(sign+combiField+expBin)
-        
+        console.log("first 3 BCD " + num.slice(1, 4) + " "+ BCDgroup1);
+        console.log("Last 3 BCD " + num.slice(4, 7) + " " + BCDgroup2);
     }
 }
 
