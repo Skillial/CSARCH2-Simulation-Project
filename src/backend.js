@@ -315,6 +315,8 @@ function toGUI(answer, roundedValue) {
     }
     let round = document.getElementById("round");
     round.value = roundedValue;
+    let exp = document.getElementById("expDisp");
+    exp.value = expPrime;
     let hexValue = "";
     for (let i = 0; i < 32; i += 4) {
         hexValue += parseInt(answer.slice(i, i + 4), 2).toString(16).toUpperCase();
