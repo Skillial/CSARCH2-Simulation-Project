@@ -40,13 +40,13 @@ window.onload = function () {
         let convertButton = document.getElementById("Convert");
         let temp = value.toString();
         let origDecimal = getDecimal(temp);
-        if (origDecimal != -1){
+        if (origDecimal != -1) {
             convertButton.disabled = true;
             invalidFeedback.style.display = 'block';
         } else {
             convertButton.disabled = false;
             invalidFeedback.style.display = 'none';
-            
+
         }
     }
 };
