@@ -3,9 +3,12 @@ let EMIN = 0;
 let BIAS = 101;
 const TableLookUp = { "000": "bcdfgh0jkm", "001": "bcdfgh100m", "010": "bcdjkh101m", "011": "bcd10h111m", "100": "jkdfgh110m", "101": "fgd01h111m", "110": "jkd00h111m", "111": "00d11h111m" }
 const TableMap = { "b": 1, "c": 2, "d": 3, "f": 5, "g": 6, "h": 7, "j": 9, "k": 10, "m": 11, }
-
+let oldnum;
 let num;
+let mode;
 let exp;
+let expPrime;
+let oldexp;
 let ID = ["Truncate", "Floor", "Ceiling", "RTNTE"];
 
 window.onload = function () {
@@ -25,6 +28,24 @@ window.onload = function () {
 
     let convertButton = document.getElementById("Convert");
     convertButton.onclick = convert;
+    let exportButton = document.getElementById("Export");
+    exportButton.onclick = outputToTextFile;
+    const exponent = document.getElementById('exp');
+
+    exponent.addEventListener('input', function (event) {
+        checkExp(event.target.value);
+    });
+    function checkExp(value) {
+        let convertButton = document.getElementById("Convert");
+        let temp = value.toString();
+        let origDecimal = getDecimal(temp);
+        if (origDecimal != -1){
+            convertButton.disabled = true;
+        } else {
+            convertButton.disabled = false;
+            
+        }
+    }
 };
 
 function convert() {
@@ -35,6 +56,8 @@ function convert() {
     let BCDgroup2 = "";
     num = document.getElementById("num").value
     exp = document.getElementById("exp").value;
+    oldnum = num;
+    oldexp = exp;
     let sign;
     if (isNaN(num) || isNaN(exp)) {
         if (num[0] == '-') {
@@ -53,7 +76,7 @@ function convert() {
     }
     num = num.toString();
     exp = parseInt(exp);
-    let expPrime = exp + BIAS;
+    expPrime = exp + BIAS;
     sign = checkSign();
     normalize();
     for (let i = 0; i < ID.length; i++) {
@@ -61,16 +84,20 @@ function convert() {
         if (button.classList.contains("active")) {
             switch (ID[i]) {
                 case "Truncate":
+                    mode = "Truncate";
                     trunc();
                     break;
                 case "Floor":
                     floor();
+                    mode = "Floor";
                     break;
                 case "Ceiling":
                     ceil();
+                    mode = "Ceiling";
                     break;
                 case "RTNTE":
                     rtnte();
+                    mode = "RTN-TE";
                     break;
             }
         }
@@ -85,6 +112,7 @@ function convert() {
         expBin = "100101"
         BCDgroup1 = "0000000000"
         BCDgroup2 = "0000000000"
+        expPrime = 101;
     } else {
         expBin = decToBin(expPrime);
         if (expBin.length != 8) {
@@ -293,4 +321,37 @@ function toGUI(answer, roundedValue) {
     }
     let hex = document.getElementById("hex");
     hex.value = hexValue;
+    let exportButton = document.getElementById("Export");
+    exportButton.disabled = false;
 }
+
+function outputToTextFile() {
+    let textContent = "GIVEN\n"
+    textContent += "Input: " + oldnum + "e" + oldexp + "\n";
+    textContent += "Rounding mode: " + mode + "\n";
+    textContent += "\n";
+    textContent += "RESULTS \n";
+    textContent += "Rounded number: " + document.getElementById("round").value + "e" + expPrime + "\n";
+    textContent += "Binary form: ";
+    for (let i = 0; i < 32; i++) {
+        textContent += document.getElementById(i).textContent;
+    }
+    textContent += "\n";
+    textContent += "Hexadecimal form: " + document.getElementById("hex").value + "\n";
+    let fileName = "Result.txt";
+    downloadTextFile(textContent, fileName);
+}
+
+
+function downloadTextFile(content, filename) {
+    let blob = new Blob([content], { type: 'text/plain' });
+    let url = URL.createObjectURL(blob);
+    let link = document.createElement('a');
+    link.href = url;
+    link.download = filename;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+}
+

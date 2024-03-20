@@ -64,6 +64,7 @@ table {
 th {
     padding: 8.9px; 
     font-size: 18px; 
+    width: 3%;
 }
 .containerIEEE {
     overflow-x: auto; 
