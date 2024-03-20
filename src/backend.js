@@ -29,7 +29,6 @@ window.onload = function () {
 
 function convert() {
     let answer;
-    let expPrime = exp + BIAS;
     let combiField = 0;
     let expBin = 0;
     let BCDgroup1 = "";
@@ -40,7 +39,7 @@ function convert() {
     if (isNaN(num) || isNaN(exp)) {
         if (num[0] == '-') {
             sign = "1";
-        } else{
+        } else {
             sign = "0";
         }
         combiField = "11111"
@@ -49,10 +48,12 @@ function convert() {
         BCDgroup2 = "0000000000"
         answer = sign + combiField + expBin + BCDgroup1 + BCDgroup2;
         console.log(answer)
+        toGUI(answer, "Invalid Input");
         return;
     }
     num = num.toString();
     exp = parseInt(exp);
+    let expPrime = exp + BIAS;
     sign = checkSign();
     normalize();
     for (let i = 0; i < ID.length; i++) {
@@ -121,7 +122,7 @@ function convert() {
     }
     answer = sign + combiField + expBin + BCDgroup1 + BCDgroup2
     console.log(answer)
-    return;
+    toGUI(answer, num);
 }
 
 function trunc() {
@@ -276,4 +277,20 @@ function DPBCD(numericalString) {
         Result += (char !== "0" && char !== "1") ? numerical[TableMap[char]] : char;
 
     return Result;
+}
+
+
+function toGUI(answer, roundedValue) {
+    for (let i = 0; i < 32; i++) {
+        let th = document.getElementById(i);
+        th.textContent = answer[i];
+    }
+    let round = document.getElementById("round");
+    round.value = roundedValue;
+    let hexValue = "";
+    for (let i = 0; i < 32; i += 4) {
+        hexValue += parseInt(answer.slice(i, i + 4), 2).toString(16);
+    }
+    let hex = document.getElementById("hex");
+    hex.value = hexValue;
 }
