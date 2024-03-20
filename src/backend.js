@@ -1,10 +1,13 @@
 let EMAX = 191;
 let EMIN = 1;
 let BIAS = 101;
+const TableLookUp = {"000":"bcdfgh0jkm","001":"bcdfgh100m","010":"bcdjkh101m","011":"bcd10h111m","100":"jkdfgh110m","101":"fgd01h111m","110":"jkd00h111m","111":"00d11h111m"}
+const TableMap = {"b":1,"c":2,"d":3,"f":5,"g":6,"h":7,"j":9,"k":10,"m":11,}
 
 let num;
 let exp;
 let ID = ["Truncate", "Floor", "Ceiling", "RTNTE"];
+
 window.onload = function () {
     for (let i = 0; i < ID.length; i++) {
         let button = document.getElementById(ID[i]);
@@ -94,8 +97,6 @@ function convert() {
         console.log(sign+combiField+expBin)
         
     }
-    
-
 }
 
 function trunc() {
@@ -173,7 +174,6 @@ function rtnte() {
     }
 }
 
-
 function normalize() {
     let newnum;
     if (num[0] == '-') {
@@ -239,4 +239,16 @@ function checkSign() {
 
 function decToBin(expPrime) {
     return (expPrime >>> 0).toString(2);
+}
+
+function DPBCD(numericalString) {
+    const numerical = numericalString.split('').map(digit => parseInt(digit).toString(2).padStart(4, "0")).join('');
+    const encoded = TableLookUp[numerical[0]+numerical[4]+numerical[8]];
+
+    let Result = "";
+
+    for (const char of encoded) 
+        Result += (char !== "0" && char !== "1") ? numerical[TableMap[char]] : char;
+
+    return Result;
 }
