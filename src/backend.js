@@ -36,13 +36,16 @@ window.onload = function () {
         checkExp(event.target.value);
     });
     function checkExp(value) {
+        let invalidFeedback = document.querySelector('.invalid-feedback');
         let convertButton = document.getElementById("Convert");
         let temp = value.toString();
         let origDecimal = getDecimal(temp);
         if (origDecimal != -1){
             convertButton.disabled = true;
+            invalidFeedback.style.display = 'block';
         } else {
             convertButton.disabled = false;
+            invalidFeedback.style.display = 'none';
             
         }
     }
@@ -71,7 +74,7 @@ function convert() {
         BCDgroup2 = "0000000000"
         answer = sign + combiField + expBin + BCDgroup1 + BCDgroup2;
         console.log(answer)
-        toGUI(answer, "Invalid Input");
+        toGUI(answer, "Invalid Input", "Invalid Input");
         return;
     }
     num = num.toString();
@@ -150,7 +153,7 @@ function convert() {
     }
     answer = sign + combiField + expBin + BCDgroup1 + BCDgroup2
     console.log(answer)
-    toGUI(answer, num);
+    toGUI(answer, num, expPrime);
 }
 
 function trunc() {
@@ -308,7 +311,7 @@ function DPBCD(numericalString) {
 }
 
 
-function toGUI(answer, roundedValue) {
+function toGUI(answer, roundedValue, expValue) {
     for (let i = 0; i < 32; i++) {
         let th = document.getElementById(i);
         th.textContent = answer[i];
@@ -316,7 +319,7 @@ function toGUI(answer, roundedValue) {
     let round = document.getElementById("round");
     round.value = roundedValue;
     let exp = document.getElementById("expDisp");
-    exp.value = expPrime;
+    exp.value = expValue;
     let hexValue = "";
     for (let i = 0; i < 32; i += 4) {
         hexValue += parseInt(answer.slice(i, i + 4), 2).toString(16).toUpperCase();

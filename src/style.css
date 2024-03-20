@@ -88,3 +88,8 @@ th {
         width: auto; 
     }
 }
+
+.error{
+    border-color: red;
+    background-color: lightcoral;
+}
