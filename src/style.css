@@ -34,22 +34,22 @@ body, html {
     color: #000;
 }
 .sign {
-    background-color: #343D46;
+    background-color: #889293;
     font-size: 1.5em;
     font-weight: bold;
 }
 .combi{
-    background-color: #4f5b66;
+    background-color: #b7c1c3;
     font-size: 1.5em;
     font-weight: bold;
 }
 .E{
-    background-color: #65737E;
+    background-color: #ccd6d8;
     font-size: 1.5em;
     font-weight: bold;
 }
 .mantissa{
-    background-color: #a7adba;
+    background-color: #e3e8eb;
     font-size: 1.5em;
     font-weight: bold;
 }
