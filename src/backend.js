@@ -289,7 +289,7 @@ function toGUI(answer, roundedValue) {
     round.value = roundedValue;
     let hexValue = "";
     for (let i = 0; i < 32; i += 4) {
-        hexValue += parseInt(answer.slice(i, i + 4), 2).toString(16);
+        hexValue += parseInt(answer.slice(i, i + 4), 2).toString(16).toUpperCase();
     }
     let hex = document.getElementById("hex");
     hex.value = hexValue;
