@@ -1,5 +1,5 @@
 let EMAX = 191;
-let EMIN = 1;
+let EMIN = 0;
 let BIAS = 101;
 const TableLookUp = { "000": "bcdfgh0jkm", "001": "bcdfgh100m", "010": "bcdjkh101m", "011": "bcd10h111m", "100": "jkdfgh110m", "101": "fgd01h111m", "110": "jkd00h111m", "111": "00d11h111m" }
 const TableMap = { "b": 1, "c": 2, "d": 3, "f": 5, "g": 6, "h": 7, "j": 9, "k": 10, "m": 11, }
@@ -28,8 +28,32 @@ window.onload = function () {
 };
 
 function convert() {
-    num = document.getElementById("num").value.toString();
-    exp = parseInt(document.getElementById("exp").value);
+    let answer;
+    let expPrime = exp + BIAS;
+    let combiField = 0;
+    let expBin = 0;
+    let BCDgroup1 = "";
+    let BCDgroup2 = "";
+    num = document.getElementById("num").value
+    exp = document.getElementById("exp").value;
+    let sign;
+    if (isNaN(num) || isNaN(exp)) {
+        if (num[0] == '-') {
+            sign = "1";
+        } else{
+            sign = "0";
+        }
+        combiField = "11111"
+        expBin = "000000"
+        BCDgroup1 = "0000000000"
+        BCDgroup2 = "0000000000"
+        answer = sign + combiField + expBin + BCDgroup1 + BCDgroup2;
+        console.log(answer)
+        return;
+    }
+    num = num.toString();
+    exp = parseInt(exp);
+    sign = checkSign();
     normalize();
     for (let i = 0; i < ID.length; i++) {
         let button = document.getElementById(ID[i]);
@@ -50,18 +74,18 @@ function convert() {
             }
         }
     }
-    console.log("NUM: ", num)
-    console.log("EXP: ", exp)
-    let sign = checkSign();
-    let expPrime = exp + BIAS;
-    let combiField = 0;
     if (expPrime > EMAX) {
         combiField = "11110"
-        expPrime = "000000"
+        expBin = "000000"
+        BCDgroup1 = "0000000000"
+        BCDgroup2 = "0000000000"
     } else if (expPrime < EMIN) {
-        return;
+        combiField = "01000"
+        expBin = "100101"
+        BCDgroup1 = "0000000000"
+        BCDgroup2 = "0000000000"
     } else {
-        let expBin = decToBin(expPrime);
+        expBin = decToBin(expPrime);
         if (expBin.length != 8) {
             let temp = expBin;
             expBin = ""
@@ -69,7 +93,6 @@ function convert() {
                 expBin += "0";
             }
             expBin += temp;
-            console.log(expBin)
         }
         let newnum = "";
         if (num[0] == '-') {
@@ -92,15 +115,13 @@ function convert() {
         } else {
             combiField = expBin.substring(0, 2) + firstDigit.substring(1, 4);
             expBin = expBin.substring(2);
-
         }
-        const BCDgroup1 = DPBCD(num.slice(1, 4));
-        const BCDgroup2 = DPBCD(num.slice(4, 7));
-
-        console.log(sign + combiField + expBin)
-        console.log("first 3 BCD " + num.slice(1, 4) + " " + BCDgroup1);
-        console.log("Last 3 BCD " + num.slice(4, 7) + " " + BCDgroup2);
+        BCDgroup1 = DPBCD(newnum.slice(1, 4));
+        BCDgroup2 = DPBCD(newnum.slice(4, 7));
     }
+    answer = sign + combiField + expBin + BCDgroup1 + BCDgroup2
+    console.log(answer)
+    return;
 }
 
 function trunc() {
