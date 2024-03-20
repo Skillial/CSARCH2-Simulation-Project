@@ -1,3 +1,7 @@
+let EMAX = 191;
+let EMIN = 1;
+let BIAS = 101;
+
 let num;
 let exp;
 let ID = ["Truncate", "Floor", "Ceiling", "RTNTE"];
@@ -22,7 +26,7 @@ window.onload = function () {
 
 function convert() {
     num = document.getElementById("num").value.toString();
-    exp = document.getElementById("exp").value;
+    exp = parseInt(document.getElementById("exp").value);
     normalize();
     for (let i = 0; i < ID.length; i++) {
         let button = document.getElementById(ID[i]);
@@ -45,7 +49,53 @@ function convert() {
     }
     console.log("NUM: ", num)
     console.log("EXP: ", exp)
-    let sign = checkSign(num);
+    let sign = checkSign();
+    let expPrime = exp + BIAS;
+    let combiField = 0;
+    if (expPrime > EMAX) {
+        combiField = "11110"
+        expPrime = "000000"
+    } else if (expPrime < EMIN){
+        return;
+    } else {
+        let expBin = decToBin(expPrime);
+        if (expBin.length != 8) {
+            let temp = expBin;
+            expBin = ""
+            for (let i = 0; i < 8 - temp.length; i++) {
+                expBin += "0";
+            }
+            expBin +=temp;
+            console.log(expBin)
+        }
+        let newnum = "";
+        if (num[0] == '-') {
+            newnum = num.substring(1);
+        } else {
+            newnum = num;
+        }
+        let firstDigit = decToBin(parseInt(newnum[0]));
+        if (firstDigit.length != 4) {
+            let temp = firstDigit;
+            firstDigit = ""
+            for (let i = 0; i < 4 - temp.length; i++) {
+                firstDigit += "0";
+            }
+            firstDigit +=temp;
+        }
+        if (firstDigit[0]=='1'){
+            combiField = "11" + expBin.substring(0,2) + firstDigit.substring(3,4);
+            expBin = expBin.substring(2);
+        } else {
+            combiField =  expBin.substring(0,2) + firstDigit.substring(1,4);
+            expBin = expBin.substring(2);
+        
+        }
+        console.log(sign+combiField+expBin)
+        
+    }
+    
+
 }
 
 function trunc() {
@@ -179,10 +229,14 @@ function getDecimal(temp) {
     return strNumber = temp.toString().indexOf('.');
 }
 
-function checkSign(num) {
-    if (num < 0) {
+function checkSign() {
+    if (num[0] == 0) {
         return 1;
     } else {
         return 0;
     }
 }   
+
+function decToBin(expPrime) {
+    return (expPrime >>> 0).toString(2);
+}
