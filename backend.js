@@ -62,7 +62,7 @@ function convert() {
     oldnum = num;
     oldexp = exp;
     let sign;
-    if (isNaN(num) || isNaN(exp)) {
+    if (isNaN(num) || isNaN(exp) || num == "" || exp == "") {
         if (num[0] == '-') {
             sign = "1";
         } else {
@@ -328,6 +328,9 @@ function toGUI(answer, roundedValue, expValue) {
     hex.value = hexValue;
     let exportButton = document.getElementById("Export");
     exportButton.disabled = false;
+    if (roundedValue == "Invalid Input") {
+        exportButton.disabled = true;
+    }
 }
 
 function outputToTextFile() {
