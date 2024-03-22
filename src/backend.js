@@ -79,9 +79,9 @@ function convert() {
     }
     num = num.toString();
     exp = parseInt(exp);
-    expPrime = exp + BIAS;
     sign = checkSign();
     normalize();
+    expPrime = exp + BIAS;
     for (let i = 0; i < ID.length; i++) {
         let button = document.getElementById(ID[i]);
         if (button.classList.contains("active")) {
