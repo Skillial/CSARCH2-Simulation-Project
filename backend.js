@@ -115,7 +115,6 @@ function convert() {
         expBin = "100101"
         BCDgroup1 = "0000000000"
         BCDgroup2 = "0000000000"
-        expPrime = 101;
     } else {
         expBin = decToBin(expPrime);
         if (expBin.length != 8) {
@@ -152,8 +151,14 @@ function convert() {
         BCDgroup2 = DPBCD(newnum.slice(4, 7));
     }
     answer = sign + combiField + expBin + BCDgroup1 + BCDgroup2
-    console.log(answer)
-    toGUI(answer, num, exp);
+    if (expPrime > EMAX) {
+        toGUI(answer, num, "Infinity");
+    } else if (expPrime < EMIN) {
+        toGUI(answer, "0000000", "0");
+    } else {
+        toGUI(answer, num, exp);
+    }
+
 }
 
 function trunc() {
@@ -345,7 +350,11 @@ function outputToTextFile() {
     textContent += "Rounding mode: " + mode + "\n";
     textContent += "\n";
     textContent += "RESULTS \n";
-    textContent += "Rounded number: " + document.getElementById("round").value + "e" + exp + "\n";
+    if (document.getElementById("expDisp").value == "Infinity") {
+        textContent += "Rounded number: Infinity" + "\n";
+    } else {
+        textContent += "Rounded number: " + document.getElementById("round").value + "e" + document.getElementById("expDisp").value + "\n";
+    }
     textContent += "Binary form: ";
     for (let i = 0; i < 32; i++) {
         textContent += document.getElementById(i).textContent;
