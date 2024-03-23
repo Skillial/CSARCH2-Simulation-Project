@@ -3,10 +3,12 @@
 ### Description
 
 ### Problems encountered
-1. 
-2. 
-3. 
-4. 
+1. Javascript's floating point representaion
+2. Rounding with strings 
+3. Exponents with floating points
+4. Integer representaion of javascript
+5. Whitespaces in input produces NaN
+6. Representable inputs with >90 exponents
 
 ## Usage
 ### Inputs
