@@ -36,6 +36,9 @@ The website serves as a decimal-32 floating-point converter, capable of processi
 **Binary Form:** 32-Bit Conversion of the Input <br>
 **Hexadecimal Form:** 8-Digit Hexadecimal Conversion of the Input
 
+### Demo
+Access the video demo thorugh this [link](https://youtu.be/UjbbGdQmPh4) <br>
+Access the test cases [here](test cases)
 ## Authors
 
 1. Cabrera, Jean
