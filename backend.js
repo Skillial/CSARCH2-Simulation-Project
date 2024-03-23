@@ -153,7 +153,7 @@ function convert() {
     }
     answer = sign + combiField + expBin + BCDgroup1 + BCDgroup2
     console.log(answer)
-    toGUI(answer, num, expPrime);
+    toGUI(answer, num, exp);
 }
 
 function trunc() {
@@ -277,6 +277,12 @@ function normalize() {
                 exp += origDecimal - 7;
 
             }
+        }
+    }
+    if (exp <= 96) {
+        while (exp > 90 && num[0] == '0') {
+            num = num.substring(1, num.length) + '0';
+            exp--;
         }
     }
 
