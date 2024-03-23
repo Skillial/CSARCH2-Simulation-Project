@@ -10,15 +10,15 @@
 
 ## Usage
 ### Inputs
-**Decimal:** Base-10 number <br>
-**Exponent:** Base-10 number (no floating points) <br>
+**Decimal:** Base-10 Number <br>
+**Exponent:** Base-10 Number (No Floating Points) <br>
 **Rounding mode:** Truncate/Floor/Ceiling/RTN-TE
 
 ### Outputs
-**Rounded number:**
-**Exponent after rounding:**
-**Binary Form:**
-**Hexadecimal Form:**
+**Rounded number:** 7-Digit Base-10 Number
+**Exponent after rounding:** Base-10 Number (w/o Bias)
+**Binary Form:** 32-Bit Conversion of the Input
+**Hexadecimal Form:** 8-Digit Hexadecimal Conversion of the Input
 
 ## Authors
 
