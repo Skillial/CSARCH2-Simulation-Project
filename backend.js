@@ -345,7 +345,7 @@ function outputToTextFile() {
     textContent += "Rounding mode: " + mode + "\n";
     textContent += "\n";
     textContent += "RESULTS \n";
-    textContent += "Rounded number: " + document.getElementById("round").value + "e" + expPrime + "\n";
+    textContent += "Rounded number: " + document.getElementById("round").value + "e" + exp + "\n";
     textContent += "Binary form: ";
     for (let i = 0; i < 32; i++) {
         textContent += document.getElementById(i).textContent;
