@@ -1,6 +1,12 @@
 # Decimal-32 floating point converter
 ## About The Project
+### Description
 
+### Problems encountered
+1. 
+2. 
+3. 
+4. 
 
 ## Usage
 ### Inputs
@@ -9,12 +15,10 @@
 **Rounding mode:** Truncate/Floor/Ceiling/RTN-TE
 
 ### Outputs
-
-### Problems encountered
-1. 
-2. 
-3. 
-4. 
+**Rounded number:**
+**Exponent after rounding:**
+**Binary Form:**
+**Hexadecimal Form:**
 
 ## Authors
 
