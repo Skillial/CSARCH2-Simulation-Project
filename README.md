@@ -3,6 +3,17 @@
 ### Description
 The website serves as a decimal-32 floating-point converter, capable of processing decimal inputs in base-10 exponential format and converting them into binary and hexadecimal forms. The 32-bit value is partitioned into 1 bit for the sign, 5 bits for the combination field, 6 bits for the exponent continuation, and 20 bits for the coefficient continuation. Special cases such as NaN and Infinity are also detected and converted. Access the website through this [link]( https://skillial.github.io/CSARCH2-Simulation-Project/)
 
+### Steps
+1. Check if input is valid
+2. Normalize the input
+3. Shift input (if possible)
+4. Choose rounding method
+5. Get Sign Bit from input
+6. Get Combinational Field from input
+7. Get Exponent Continuation from input
+8. Convert remaining input to Densely Packed BCD
+9. Compile and Display
+
 
 ### Problems encountered
 #### 1. Javascript's floating point representaion
@@ -38,7 +49,7 @@ The website serves as a decimal-32 floating-point converter, capable of processi
 
 ### Demo
 Access the video demo thorugh this [link](https://youtu.be/UjbbGdQmPh4) <br>
-Access the test cases [here](test%20cases/)
+Access the test cases [here](test%20case/)
 ## Authors
 
 1. Cabrera, Jean
