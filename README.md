@@ -37,7 +37,7 @@ The website serves as a decimal-32 floating-point converter, capable of processi
 **Hexadecimal Form:** 8-Digit Hexadecimal Conversion of the Input
 
 ### Demo
-Access the video demo thorugh this [link](https://youtu.be/UjbbGdQmPh4) <br>
+The video demo may also be accessed through this [link](https://youtu.be/UjbbGdQmPh4) <br>
 Access the test cases [here](test%20cases/)
 ## Authors
 
