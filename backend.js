@@ -300,7 +300,7 @@ function getDecimal(temp) {
 }
 
 function checkSign() {
-    if (num[0] == 0) {
+    if (num[0] == '-') {
         return 1;
     } else {
         return 0;
