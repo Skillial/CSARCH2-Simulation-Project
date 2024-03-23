@@ -3,9 +3,9 @@
 ### Description
 
 ### Problems encountered
-1. Javascript's floating point representaion <br>
-    Explanation: Some of the floating point numbers were represented differently when operations were performed. For example, 0.5 minus 0.4 resulted in 0.09999999999999964.<br>
-    Fix: The input was taken as a string instead of an integer.
+1. **Javascript's floating point representaion** <br>
+    **Explanation:** Some of the floating point numbers were represented differently when operations were performed. For example, 0.5 minus 0.4 resulted in 0.09999999999999964.<br>
+    **Fix:** The input was taken as a string instead of an integer.
 2. Rounding with strings <br>
     Explanation: Since the inputs are stored as strings, rounding '9' up to '10' was a challenge <br>
     Fix: The input was first parsed into an integer before incrementing. Afterwards, it will be parsed back into a string.
