@@ -62,7 +62,9 @@ function convert() {
     oldnum = num;
     oldexp = exp;
     let sign;
-    if (isNaN(num) || isNaN(exp) || num == "" || exp == "") {
+    let numString = num.toString();
+    let expSting = exp.toString();
+    if (isNaN(num) || isNaN(exp) || num == "" || exp == "" || numString.includes(" ") || expSting.includes(" ")) {
         if (num[0] == '-') {
             sign = "1";
         } else {
