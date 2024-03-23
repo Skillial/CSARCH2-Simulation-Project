@@ -3,9 +3,19 @@
 
 
 ## Usage
-
 ### Inputs
-aa
+**Decimal:** base-10 number
+**Exponent:** base-10 number
+**Rounding mode:** Truncate/ Floor/ Ceiling/RTN-TE
+
+### Outputs
+
+### Problems encountered
+1. 
+2. 
+3. 
+4. 
+
 ## Authors
 
 1. Cabrera, Jean
