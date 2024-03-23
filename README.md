@@ -15,9 +15,9 @@
 **Rounding mode:** Truncate/Floor/Ceiling/RTN-TE
 
 ### Outputs
-**Rounded number:** 7-Digit Base-10 Number
-**Exponent after rounding:** Base-10 Number (w/o Bias)
-**Binary Form:** 32-Bit Conversion of the Input
+**Rounded number:** 7-Digit Base-10 Number <br>
+**Exponent after rounding:** Base-10 Number (w/o Bias) <br>
+**Binary Form:** 32-Bit Conversion of the Input <br>
 **Hexadecimal Form:** 8-Digit Hexadecimal Conversion of the Input
 
 ## Authors
