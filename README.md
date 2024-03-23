@@ -1,6 +1,8 @@
 # Decimal-32 floating point converter
 ## About The Project
 ### Description
+The website serves as a decimal-32 floating-point converter, capable of processing decimal inputs in base-10 exponential format and converting them into binary and hexadecimal forms. The 32-bit value is partitioned into 1 bit for the sign, 5 bits for the combination field, 6 bits for the exponent continuation, and 20 bits for the coefficient continuation. Special cases such as NaN and Infinity are also detected and converted. Access the website through this [link]( https://skillial.github.io/CSARCH2-Simulation-Project/)
+
 
 ### Problems encountered
 #### 1. Javascript's floating point representaion
