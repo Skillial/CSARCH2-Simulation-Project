@@ -6,7 +6,7 @@
 ### Inputs
 **Decimal:** Base-10 number <br>
 **Exponent:** Base-10 number (no floating points) <br>
-**Rounding mode:** Truncate/ Floor/ Ceiling/RTN-TE
+**Rounding mode:** Truncate/Floor/Ceiling/RTN-TE
 
 ### Outputs
 
