@@ -44,8 +44,8 @@ The website serves as a decimal-32 floating-point converter, capable of processi
 ### Outputs
 **Rounded number:** 7-Digit Base-10 Number <br>
 **Exponent after rounding:** Base-10 Number (w/o Bias) <br>
-**Binary Form:** 32-Bit Conversion of the Output <br>
-**Hexadecimal Form:** 8-Digit Hexadecimal Conversion of the Output
+**Binary Form:** 32-Bit Conversion of the Input <br>
+**Hexadecimal Form:** 8-Digit Hexadecimal Conversion of the Input
 
 ### Demo
 The video demo may also be accessed through this [link](https://youtu.be/UjbbGdQmPh4) <br>
