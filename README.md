@@ -4,8 +4,8 @@
 
 ## Usage
 ### Inputs
-**Decimal:** base-10 number <br>
-**Exponent:** base-10 number <br>
+**Decimal:** Base-10 number <br>
+**Exponent:** Base-10 number (no floating points) <br>
 **Rounding mode:** Truncate/ Floor/ Ceiling/RTN-TE
 
 ### Outputs
