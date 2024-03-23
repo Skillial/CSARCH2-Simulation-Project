@@ -38,7 +38,7 @@ The website serves as a decimal-32 floating-point converter, capable of processi
 
 ### Demo
 Access the video demo thorugh this [link](https://youtu.be/UjbbGdQmPh4) <br>
-Access the test cases [here](test_cases/)
+Access the test cases [here](test%20case/)
 ## Authors
 
 1. Cabrera, Jean
